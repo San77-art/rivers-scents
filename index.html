@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivers - Perfumaria Árabe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
+    
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+    
+    <!-- Cabeçalho -->
+    <header class="relative bg-gradient-to-b from-purple-700 to-blue-700 h-28 flex items-center px-4 shadow-md">
+        <!-- Logo e Título -->
+        <div class="flex items-center space-x-2">
+            <h1 class="text-base md:text-xl font-semibold text-white animate-pulse">Rivers</h1>
+        </div>
+    
+        <!-- Barra de Pesquisa -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 w-10/12 md:w-1/3">
+            <input 
+                type="text" 
+                placeholder="Buscar perfumes..." 
+                class="w-full px-4 py-1.5 rounded-full shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+        </div>
+    </header>
+     <!-- Alpine.js para funcionalidade -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
+
+<!-- Carrossel com autoplay e transições -->
+<section class="py-10 bg-gray-100">
+    <h2 class="text-3xl font-bold text-center mb-6"></h2>
+  
+    <div class="relative max-w-5xl mx-auto overflow-hidden">
+      <div id="carrossel" class="flex transition-transform duration-500 gap-6">
+        <!-- Imagens Carrossel -->
+        <img src="images/carrossel-owner.gif.gif">
+  
+        <img src="https://via.placeholder.com/400x300.png?text=Projeto+1" alt="Projeto 1" class="w-[400px] h-[300px] rounded-lg flex-shrink-0">
+  
+        <img src="https://via.placeholder.com/400x300.png?text=Projeto+2" alt="Projeto 2" class="w-[400px] h-[300px] rounded-lg flex-shrink-0">
+  
+        <!-- Exemplo de vídeo no carrossel -->
+        <iframe class="w-[400px] h-[300px] rounded-lg flex-shrink-0" 
+                src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
+                title="Projeto em Vídeo"
+                frameborder="0"
+                allowfullscreen></iframe>
+      </div>
+  
+      <!-- Botões de navegação -->
+      <button onclick="moverCarrossel(-1)" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full hover:bg-gray-700 z-10">
+        &#10094;
+      </button>
+      <button onclick="moverCarrossel(1)" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full hover:bg-gray-700 z-10">
+        &#10095;
+      </button>
+    </div>
+  </section>
+  
+  <script>
+    let posicao = 0;
+  
+    function moverCarrossel(direcao) {
+      const carrossel = document.getElementById('carrossel');
+      const larguraItem = carrossel.children[0].offsetWidth + 24; // largura + gap
+      const totalItems = carrossel.children.length;
+  
+      posicao += direcao;
+      if (posicao < 0) posicao = 0;
+      if (posicao > totalItems - 1) posicao = totalItems - 1;
+  
+      carrossel.style.transform = `translateX(-${posicao * larguraItem}px)`;
+    }
+  </script>
+  
+
+
+    <!-- Video -->
+      <!-- Video -->
+<div class="flex justify-center items-center p-4">
+    <iframe 
+        class="rounded-lg overflow-hidden shadow-lg"
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/P76clzPRaOA?si=uOMY4iBwNzbsSLi4&controls=0&modestbranding=1&rel=0" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen
+        style="border-radius: 15px; max-width: 100%;">
+    </iframe>
+</div>
+
+
+
+   <!-- Hero Section -->
+    <main class="flex flex-col items-center justify-center min-h-[60vh] text-center p-6">
+        <h1 class="text-3xl font-semibold text-yellow-400 mb-4">Descubra a essência da perfumaria árabe</h1>
+        <p class="text-gray-700 max-w-lg mb-6">
+            Na Rivers, trazemos perfumes árabes exclusivos, combinando tradição e luxo em fragrâncias marcantes.
+        </p>
+        
+        <a href="#" class="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-yellow-600 transition">
+            Conheça nossos perfumes
+        </a>
+    </main>
+    
+    <!-- Seção de Produtos -->
+    <section class="py-16 bg-yellow-100 text-center">
+        <h2 class="text-4xl text-yellow-600 font-bold mb-8">Nossos Perfumes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 md:px-16">
+            <!-- Produto 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <img src="asad-perfum.jpg.jpeg" alt="Perfume 1" class="w-full mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-gray-800">Lattafa Asad</h3>
+                <p class="text-gray-600 mt-2">Fragrância intensa, amadeirada e oriental com notas de oud e especiarias.</p>
+                <button class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">Ver Mais</button>
+            </div>
+            <!-- Produto 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <img src="fakhar-black.jpg.jpeg" alt="Perfume 2" class="w-full mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-gray-800">Lattafa Fakhar Black</h3>
+                <p class="text-gray-600 mt-2">Frescor de maçã e bergamota, com toques de lavanda, canela e fundo amadeirado.</p>
+                <button class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">Ver Mais</button>
+            </div>
+            <!-- Produto 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <img src="durrat-perfum.jpg.jpeg" alt="Perfume 3" class="w-full mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-gray-800">Al Wataniah Durrat</h3>
+                <p class="text-gray-600 mt-2">Fragrância floral e frutal, com notas doces e frescas, ideal para momentos delicados.</p>
+                <button class="mt-4 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">Ver Mais</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção de Contato -->
+    <section class="py-16 bg-gray-900 text-white text-center">
+        <h2 class="text-4xl font-bold mb-8 text-yellow-400">Entre em Contato</h2>
+        <p class="text-gray-300 mb-6 max-w-lg mx-auto">
+            Tem alguma dúvida ou deseja saber mais sobre nossos produtos? Entre em contato conosco!
+        </p>
+        
+        <!-- Links para Instagram e WhatsApp com logos -->
+        <div class="mt-8 flex justify-center space-x-6">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/rivers_scents/?utm_source=ig_web_button_share_sheet" target="_blank">
+                <img src="insta64.webp" alt="Instagram" class="w-16 h-16 hover:opacity-75 transition">
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/5567999214470" target="_blank">
+                <img src="whats64.png" alt="WhatsApp" class="w-16 h-16 hover:opacity-75 transition">
+            </a>
+        </div>
+    </section>
+    
+</body>
+</html>
