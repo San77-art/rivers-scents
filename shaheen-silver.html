@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaheen Silver - Rivers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <header class="bg-purple-700 text-white p-4 text-center text-xl font-bold">Rivers</header>
+
+  <main class="max-w-6xl mx-auto py-10 px-4 grid md:grid-cols-2 gap-10">
+    <!-- Galeria de imagens -->
+    <div class="space-y-4">
+      <img src="shahenn.jpg" alt="Shaheen Silver" class="w-full rounded-lg shadow">
+      <div class="grid grid-cols-3 gap-2">
+       
+      </div>
+    </div>
+
+    <!-- Informações do produto -->
+    <div class="space-y-6">
+      <h1 class="text-3xl font-bold text-purple-700">Shaheen Silver</h1>
+      <p class="text-gray-600">Perfume elegante, sofisticado e com excelente fixação.</p>
+      <p class="text-2xl font-semibold text-purple-800">R$ 315,00</p>
+
+      <!-- Cálculo de frete -->
+      <div>
+        <label class="block text-sm font-medium mb-1" for="cep">Calcular Frete (CEP)</label>
+        <input id="cep" type="text" placeholder="Digite seu CEP" class="w-full border px-4 py-2 rounded shadow-sm">
+        <button onclick="alert('Frete: R$ 25,00 - Entrega em 5 dias úteis')" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800">Calcular</button>
+      </div>
+
+      <!-- Comprar -->
+      <button class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">Finalizar Compra</button>
+    </div>
+  </main>
+
+</body>
+</html>
