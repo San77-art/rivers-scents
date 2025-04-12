@@ -11,3 +11,4 @@ $url = "https://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?" .
 $response = file_get_contents($url);
 echo $response;
 ?>
+
