@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sharaf - Rivers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <header class="bg-purple-700 text-white p-4 text-center text-xl font-bold">Rivers</header>
+
+  <main class="max-w-6xl mx-auto py-10 px-4 grid md:grid-cols-2 gap-10">
+    <!-- Galeria de imagens -->
+    <div class="space-y-4">
+      <img src="sharaf.jpg" alt="Sharaf" class="w-full rounded-lg shadow">
+    </div>
+
+    <!-- Informações do produto -->
+    <div class="space-y-6">
+      <h1 class="text-3xl font-bold text-purple-700">Zimaya Sharaf 100 ml</h1>
+      <p class="text-gray-600">Zimaya Sharaf Blend é uma fragrância unissex que combina notas orientais e gourmand, oferecendo uma experiência olfativa sofisticada e envolvente.  </p>
+      <p class="text-2xl font-semibold text-purple-800">R$ 375,00</p>
+
+      <!-- Cálculo de frete -->
+      <div>
+        <label class="block text-sm font-medium mb-1" for="cep">Calcular Frete (CEP)</label>
+        <input id="cep" type="text" placeholder="Digite seu CEP" class="w-full border px-4 py-2 rounded shadow-sm">
+        <button type="button" onclick="alert('Frete: R$ 25,00 - Entrega em 5 dias úteis')" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800">
+          Calcular
+        </button>
+      </div>
+
+      <!-- Formulário de Compra -->
+      <form action="finalizar-compra.php" method="POST" class="pt-4">
+        <input type="hidden" name="produto" value="Shaheen Silver">
+        <input type="hidden" name="preco" value="315.00">
+        <input type="hidden" name="quantidade" value="1">
+        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
+          Finalizar Compra
+        </button>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

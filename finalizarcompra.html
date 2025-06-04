@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Finalizar Compra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 py-10">
+  <main class="max-w-2xl mx-auto bg-white p-6 rounded shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Finalizar Compra</h1>
+
+    <!-- Produto -->
+    <div class="flex items-center space-x-4 mb-6">
+      <img id="imagem-produto" src="" alt="Produto" class="w-32 h-32 object-contain rounded border">
+      <div>
+        <h2 id="nome-produto" class="text-xl font-semibold"></h2>
+        <p id="preco-produto" class="text-green-600 font-bold"></p>
+        <p id="quantidade-produto" class="text-sm text-gray-600"></p>
+      </div>
+    </div>
+
+    <!-- Formulário -->
+    <form action="/comprar" method="POST" class="space-y-4">
+      <input type="hidden" name="produto">
+      <input type="hidden" name="preco">
+      <input type="hidden" name="quantidade">
+
+      <input type="text" name="cliente" placeholder="Seu nome" required class="w-full p-3 border rounded">
+      <input type="text" name="endereco" placeholder="Endereço de entrega" required class="w-full p-3 border rounded">
+
+      <select name="pagamento" required class="w-full p-3 border rounded">
+        <option value="">Forma de pagamento</option>
+        <option value="pix">PIX</option>
+        <option value="cartao">Cartão de Crédito</option>
+        <option value="boleto">Boleto</option>
+      </select>
+
+      <button type="submit" class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 rounded">
+        Confirmar Pedido
+      </button>
+    </form>
+  </main>
+
+  <!-- JavaScript para preencher dados dinâmicos -->
+  <script>
+    // Etapa 1: Capturar os parâmetros da URL
+    const params = new URLSearchParams(window.location.search);
+
+    // Etapa 2: Obter os valores dos parâmetros
+    const produto = params.get("produto");         // ex: "Khafaya EDP M 100ML"
+    const preco = params.get("preco");             // ex: "299.99"
+    const quantidade = params.get("quantidade");   // ex: "1"
+    const imagem = params.get("imagem");           // ex: "khafaya.jpg"
+
+    // Etapa 3: Atualizar os elementos visuais da página
+    document.getElementById("nome-produto").textContent = produto;
+    document.getElementById("preco-produto").textContent = "R$ " + preco;
+    document.getElementById("quantidade-produto").textContent = "Quantidade: " + quantidade;
+    document.getElementById("imagem-produto").src = "imagens/" + imagem;
+
+    // Etapa 4: Preencher os campos ocultos do formulário
+    document.querySelector('input[name="produto"]').value = produto;
+    document.querySelector('input[name="preco"]').value = preco;
+    document.querySelector('input[name="quantidade"]').value = quantidade;
+  </script>
+</body>
+</html>

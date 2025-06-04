@@ -1,0 +1,28 @@
+{
+  "name": "riversscents",
+  "version": "1.0.0",
+  "description": "Loja online de perfumes desenvolvida como projeto de estudo, integrando modelagem de banco de dados e controle de versão com Git.",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/San77-art/rivers-scents.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/San77-art/rivers-scents/issues"
+  },
+  "homepage": "https://github.com/San77-art/rivers-scents#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.14.1"
+  }
+}

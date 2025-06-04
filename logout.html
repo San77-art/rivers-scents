@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Logout</title>
+</head>
+<body>
+  <h1>Saindo...</h1>
+
+  <script>
+    // Remove a chave de login do localStorage
+    localStorage.removeItem("logado");
+
+    // Redireciona para a tela de login após 1 segundo
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+  </script>
+</body>
+</html>

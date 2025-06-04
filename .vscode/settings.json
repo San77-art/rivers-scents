@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+
+        {
+            "mysqlOptions": {
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "rivers",
+            "database": "rivers",
+            "username": "root",
+            "password": "S@n07101979"
+        }
+    ]
+}

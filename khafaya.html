@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khafaya - Rivers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <header class="bg-purple-700 text-white p-4 text-center text-xl font-bold">Rivers</header>
+
+  <main class="max-w-6xl mx-auto py-10 px-4 grid md:grid-cols-2 gap-10">
+    <!-- Galeria de imagens -->
+    <div class="space-y-4">
+      <img src="khafaya.jpg" alt="Khafaya" class="w-full rounded-lg shadow">
+    </div>
+
+    <!-- Informações do produto -->
+    <div class="space-y-6">
+      <h1 class="text-3xl font-bold text-purple-700">Zimaya Khafaya EDP 100 ml</h1>
+      <p class="text-gray-600">Khafaya da Zimaya é um perfume envolvente e sofisticado, com notas orientais intensas que exalam mistério e elegância.  </p>
+      <p class="text-2xl font-semibold text-purple-800">R$ 299,99</p>
+
+      <!-- Cálculo de frete -->
+      <div>
+        <label class="block text-sm font-medium mb-1" for="cep">Calcular Frete (CEP)</label>
+        <input id="cep" type="text" placeholder="Digite seu CEP" class="w-full border px-4 py-2 rounded shadow-sm">
+        <button type="button" onclick="alert('Frete: R$ 25,00 - Entrega em 5 dias úteis')" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800">
+          Calcular
+        </button>
+      </div>
+
+      <!-- Formulário de Compra -->
+     <form action="finalizarcompra.html" method="GET" class="pt-4">
+  <input type="hidden" name="produto" value="Khafaya EDP M 100ML">
+  <input type="hidden" name="preco" value="299.99">
+  <input type="hidden" name="quantidade" value="1">
+  <input type="hidden" name="imagem" value="khafaya.jpg">
+  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
+    Finalizar Compra
+  </button>
+</form>
+
+    </div>
+  </main>
+
+</body>
+</html>
