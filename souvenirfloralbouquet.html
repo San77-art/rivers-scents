@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shaheen Silver - Rivers</title>
+  <title>Souvenir floral Bouquet - Rivers</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-800">
@@ -19,7 +19,9 @@
     <!-- Informações do produto -->
     <div class="space-y-6">
       <h1 class="text-3xl font-bold text-purple-700">Afnan Souvenir Floral Bouquet Eau de Parfum 100ml</h1>
-      <p class="text-gray-600">Afnan Souvenir Floral Bouquet é uma fragrância feminina delicada e marcante, com notas florais envolventes e um toque adocicado. Combina elegância e frescor em um rastro encantador. Ideal para mulheres românticas e sofisticadas.</p>
+      <p class="text-gray-600">
+        Afnan Souvenir Floral Bouquet é uma fragrância feminina delicada e marcante, com notas florais envolventes e um toque adocicado. Combina elegância e frescor em um rastro encantador. Ideal para mulheres românticas e sofisticadas.
+      </p>
       <p class="text-2xl font-semibold text-purple-800">R$ 519,99</p>
 
       <!-- Cálculo de frete -->
@@ -31,18 +33,19 @@
         </button>
       </div>
 
-      <!-- Formulário de Compra -->
-      <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Souvenir Floral Bouquet EDP M 100ML">
-  <input type="hidden" name="preco" value="519.99">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="souvenirfloralbouquet.png">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
+      <!-- Botão de Compra -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md mt-4">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <script>
+    function finalizarCompra() {
+      alert("Compra realizada com sucesso!");
+      window.location.href = "pagina-confirmacao.html";
+    }
+  </script>
 
 </body>
 </html>

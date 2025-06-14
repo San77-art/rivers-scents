@@ -19,7 +19,9 @@
     <!-- Informações do produto -->
     <div class="space-y-6">
       <h1 class="text-3xl font-bold text-purple-700">Lattafa Musamam Eau de Parfum 100ml</h1>
-      <p class="text-gray-600">Musamam da Lattafa é um perfume unissex amadeirado e aromático, lançado em 2022, que combina notas de açafrão, lavanda, mandarina italiana, âmbar, cedro e incenso, resultando em uma fragrância sofisticada e envolvente. </p>
+      <p class="text-gray-600">
+        Musamam da Lattafa é um perfume unissex amadeirado e aromático, lançado em 2022, que combina notas de açafrão, lavanda, mandarina italiana, âmbar, cedro e incenso, resultando em uma fragrância sofisticada e envolvente.
+      </p>
       <p class="text-2xl font-semibold text-purple-800">R$ 375,00</p>
 
       <!-- Cálculo de frete -->
@@ -31,18 +33,26 @@
         </button>
       </div>
 
-      <!-- Formulário de Compra -->
-      <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Musamam EDP M 100ML">
-  <input type="hidden" name="preco" value="375.00">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="musamamlattafa.jpg">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
+      <!-- Botão de Compra -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md mt-4">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <!-- Script -->
+  <script>
+    function finalizarCompra() {
+      const sucesso = true;
+
+      if (sucesso) {
+        alert("Compra realizada com sucesso!");
+        window.location.href = "pagina-confirmacao.html";
+      } else {
+        alert("Erro ao processar a compra. Tente novamente.");
+      }
+    }
+  </script>
 
 </body>
 </html>

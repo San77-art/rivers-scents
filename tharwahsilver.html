@@ -15,7 +15,7 @@
     <div class="space-y-4">
       <img src="tharwahsilver.jpg" alt="Tharwah Silver" class="w-full rounded-lg shadow">
       <div class="grid grid-cols-3 gap-2">
-       
+        <!-- Espaço para outras imagens, se quiser -->
       </div>
     </div>
 
@@ -32,18 +32,19 @@
         <button onclick="alert('Frete: R$ 25,00 - Entrega em 5 dias úteis')" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800">Calcular</button>
       </div>
 
-      <!-- Comprar -->
-       <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Tharwah Silver EDP M 100ML">
-  <input type="hidden" name="preco" value="309.99">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="tharwahsilver.jpg">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
+      <!-- Botão de Compra -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md mt-4">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <script>
+    function finalizarCompra() {
+      alert("Compra realizada com sucesso!");
+      window.location.href = "pagina-confirmacao.html";
+    }
+  </script>
 
 </body>
 </html>

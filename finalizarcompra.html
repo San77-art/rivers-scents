@@ -20,7 +20,7 @@
     </div>
 
     <!-- Formulário -->
-    <form action="/comprar" method="POST" class="space-y-4">
+    <form action="pagina-confirmacao.html" method="GET" class="space-y-4" onsubmit="return validarFormulario();">
       <input type="hidden" name="produto">
       <input type="hidden" name="preco">
       <input type="hidden" name="quantidade">
@@ -28,12 +28,15 @@
       <input type="text" name="cliente" placeholder="Seu nome" required class="w-full p-3 border rounded">
       <input type="text" name="endereco" placeholder="Endereço de entrega" required class="w-full p-3 border rounded">
 
-      <select name="pagamento" required class="w-full p-3 border rounded">
+      <select id="pagamento" name="pagamento" required class="w-full p-3 border rounded" onchange="mostrarOpcoesPagamento()">
         <option value="">Forma de pagamento</option>
         <option value="pix">PIX</option>
         <option value="cartao">Cartão de Crédito</option>
         <option value="boleto">Boleto</option>
       </select>
+
+      <!-- Área dinâmica de pagamento -->
+      <div id="area-pagamento" class="space-y-4"></div>
 
       <button type="submit" class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 rounded">
         Confirmar Pedido
@@ -41,27 +44,67 @@
     </form>
   </main>
 
-  <!-- JavaScript para preencher dados dinâmicos -->
+  <!-- Script -->
   <script>
-    // Etapa 1: Capturar os parâmetros da URL
+    // Preenchimento automático com dados da URL
     const params = new URLSearchParams(window.location.search);
+    const produto = params.get("produto");
+    const preco = params.get("preco");
+    const quantidade = params.get("quantidade");
+    const imagem = params.get("imagem");
 
-    // Etapa 2: Obter os valores dos parâmetros
-    const produto = params.get("produto");         // ex: "Khafaya EDP M 100ML"
-    const preco = params.get("preco");             // ex: "299.99"
-    const quantidade = params.get("quantidade");   // ex: "1"
-    const imagem = params.get("imagem");           // ex: "khafaya.jpg"
-
-    // Etapa 3: Atualizar os elementos visuais da página
     document.getElementById("nome-produto").textContent = produto;
     document.getElementById("preco-produto").textContent = "R$ " + preco;
     document.getElementById("quantidade-produto").textContent = "Quantidade: " + quantidade;
     document.getElementById("imagem-produto").src = "imagens/" + imagem;
 
-    // Etapa 4: Preencher os campos ocultos do formulário
     document.querySelector('input[name="produto"]').value = produto;
     document.querySelector('input[name="preco"]').value = preco;
     document.querySelector('input[name="quantidade"]').value = quantidade;
+
+    // Exibição dinâmica de opções de pagamento
+    function mostrarOpcoesPagamento() {
+      const tipo = document.getElementById("pagamento").value;
+      const area = document.getElementById("area-pagamento");
+      area.innerHTML = ""; // limpa a área
+
+      if (tipo === "pix") {
+        const codigoPix = "pix_" + Math.random().toString(36).substring(2, 12).toUpperCase();
+        area.innerHTML = `
+          <div class="bg-purple-100 p-4 rounded">
+            <p class="font-semibold text-purple-700">Código Pix:</p>
+            <input type="text" value="${codigoPix}" readonly class="w-full p-2 mt-1 border rounded bg-white text-center font-mono">
+          </div>
+        `;
+      } else if (tipo === "cartao") {
+        area.innerHTML = `
+          <div class="bg-green-100 p-4 rounded space-y-2">
+            <input type="text" placeholder="Número do cartão" required class="w-full p-2 border rounded">
+            <input type="text" placeholder="Nome no cartão" required class="w-full p-2 border rounded">
+            <input type="text" placeholder="Validade (MM/AA)" required class="w-full p-2 border rounded">
+            <input type="text" placeholder="CVV" required class="w-full p-2 border rounded">
+          </div>
+        `;
+      } else if (tipo === "boleto") {
+        area.innerHTML = `
+          <div class="bg-yellow-100 p-4 rounded text-yellow-700 font-semibold">
+            O boleto será gerado e enviado para o seu e-mail.
+          </div>
+        `;
+      }
+    }
+
+    // Validação mínima
+    function validarFormulario() {
+      const tipo = document.getElementById("pagamento").value;
+      if (!tipo) {
+        alert("Selecione uma forma de pagamento.");
+        return false;
+      }
+      alert("Pedido confirmado! Redirecionando...");
+      return true;
+    }
   </script>
 </body>
 </html>
+

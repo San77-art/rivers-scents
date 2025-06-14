@@ -13,17 +13,17 @@
   <main class="max-w-6xl mx-auto py-10 px-4 grid md:grid-cols-2 gap-10">
     <!-- Galeria de imagens -->
     <div class="space-y-4">
-      <img src="fakharwomen.jpg" alt="FakharRose" class="w-full rounded-lg shadow">
+      <img src="fakharwomen.jpg" alt="Fakhar Rose" class="w-full rounded-lg shadow">
       <div class="grid grid-cols-3 gap-2">
-       
+        <!-- Espaço reservado para miniaturas se quiser adicionar depois -->
       </div>
     </div>
 
     <!-- Informações do produto -->
     <div class="space-y-6">
-      <h1 class="text-3xl font-bold text-purple-700">Lattafa Fakhar Rose Eau de Perfum 100ml</h1>
-      <p class="text-gray-600">Fakhar Rose é um perfume feminino marcante, com notas florais e frutadas. Ideal para mulheres elegantes, combina rosa, jasmim e baunilha em uma fragrância envolvente e sofisticada.
-
+      <h1 class="text-3xl font-bold text-purple-700">Lattafa Fakhar Rose Eau de Parfum 100ml</h1>
+      <p class="text-gray-600">
+        Fakhar Rose é um perfume feminino marcante, com notas florais e frutadas. Ideal para mulheres elegantes, combina rosa, jasmim e baunilha em uma fragrância envolvente e sofisticada.
       </p>
       <p class="text-2xl font-semibold text-purple-800">R$ 279,90</p>
 
@@ -31,21 +31,31 @@
       <div>
         <label class="block text-sm font-medium mb-1" for="cep">Calcular Frete (CEP)</label>
         <input id="cep" type="text" placeholder="Digite seu CEP" class="w-full border px-4 py-2 rounded shadow-sm">
-        <button onclick="alert('Frete: R$ 25,00 - Entrega em 5 dias úteis')" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800">Calcular</button>
+        <button onclick="alert('Frete: R$ 25,00 - Entrega em 5 dias úteis')" class="mt-2 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800">
+          Calcular
+        </button>
       </div>
 
-      <!-- Comprar -->
-      <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Fakha Rose EDP M 100ML">
-  <input type="hidden" name="preco" value="279.90">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="fakharwomen.jpg">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
+      <!-- Botão de Compra -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md mt-4">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <!-- Script -->
+  <script>
+    function finalizarCompra() {
+      const compraFoiBemSucedida = true;
+
+      if (compraFoiBemSucedida) {
+        alert("Compra realizada com sucesso!");
+        window.location.href = "pagina-confirmacao.html";
+      } else {
+        alert("Erro ao processar a compra. Tente novamente.");
+      }
+    }
+  </script>
 
 </body>
 </html>

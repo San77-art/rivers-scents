@@ -19,7 +19,11 @@
     <!-- Informações do produto -->
     <div class="space-y-6">
       <h1 class="text-3xl font-bold text-purple-700">Armaf Club De Nuit Imperiale EDT 105ml</h1>
-      <p class="text-gray-600">O Club de Nuit Imperiale da Armaf é um perfume feminino da família floral oriental, lançado em 2022. Combina notas frutadas de lichia e bergamota, um coração floral de rosa turca e peônia, e uma base envolvente de baunilha, incenso e cedro, resultando em uma fragrância sofisticada, doce e marcante.  </p>
+      <p class="text-gray-600">
+        O Club de Nuit Imperiale da Armaf é um perfume feminino da família floral oriental, lançado em 2022.
+        Combina notas frutadas de lichia e bergamota, um coração floral de rosa turca e peônia, e uma base envolvente
+        de baunilha, incenso e cedro, resultando em uma fragrância sofisticada, doce e marcante.
+      </p>
       <p class="text-2xl font-semibold text-purple-800">R$ 375,00</p>
 
       <!-- Cálculo de frete -->
@@ -31,18 +35,26 @@
         </button>
       </div>
 
-      <!-- Formulário de Compra -->
-  <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Imperiale EDP M 100ML">
-  <input type="hidden" name="preco" value="575.00">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="imperiale.jpg">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
+      <!-- Botão de Compra com JS -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <!-- Script de Compra -->
+  <script>
+    function finalizarCompra() {
+      const compraFoiBemSucedida = true;
+
+      if (compraFoiBemSucedida) {
+        alert("Compra realizada com sucesso!");
+        window.location.href = "pagina-confirmacao.html"; // Certifique-se de criar essa página
+      } else {
+        alert("Erro ao processar a compra. Tente novamente.");
+      }
+    }
+  </script>
 
 </body>
 </html>

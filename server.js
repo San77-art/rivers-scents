@@ -9,11 +9,11 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Configuração da conexão com o banco de dados
+// Conexão com o banco de dados
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '', // coloque sua senha, se houver
+  password: 'S@n07101979', // coloque sua senha se houver
   database: 'rivers'
 });
 
@@ -25,7 +25,7 @@ db.connect((err) => {
   console.log('Conectado ao banco de dados MySQL');
 });
 
-// Rota para cadastrar usuário
+// 📌 Rota para cadastrar usuário
 app.post('/cadastro', (req, res) => {
   const { nome, email, senha } = req.body;
   const query = 'INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)';
@@ -39,7 +39,45 @@ app.post('/cadastro', (req, res) => {
   });
 });
 
-// Rota para registrar compra
+// Rota de login
+app.post('/login', (req, res) => {
+  const { email, senha } = req.body;
+  const query = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+  db.query(query, [email, senha], (err, results) => {
+    if (err) {
+      console.error('Erro ao fazer login:', err);
+      res.status(500).send('Erro no servidor');
+      return;
+    }
+    if (results.length > 0) {
+      res.status(200).json({ mensagem: 'Login bem-sucedido', usuario: results[0] });
+    } else {
+      res.status(401).send('Email ou senha inválidos');
+    }
+  });
+});
+
+
+// 📌 Rota para login de usuário
+app.post('/login', (req, res) => {
+  const { email, senha } = req.body;
+  const query = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+  db.query(query, [email, senha], (err, results) => {
+    if (err) {
+      console.error('Erro ao verificar login:', err);
+      return res.status(500).send('Erro no servidor');
+    }
+
+    if (results.length > 0) {
+      const usuario = results[0];
+      res.status(200).json({ sucesso: true, usuario: { id: usuario.id, nome: usuario.nome, email: usuario.email } });
+    } else {
+      res.status(401).json({ sucesso: false, mensagem: 'Email ou senha incorretos.' });
+    }
+  });
+});
+
+// 📌 Rota para registrar compra
 app.post('/comprar', (req, res) => {
   const { usuario_id, produto, valor } = req.body;
   const query = 'INSERT INTO compras (usuario_id, produto, valor) VALUES (?, ?, ?)';
@@ -53,6 +91,27 @@ app.post('/comprar', (req, res) => {
   });
 });
 
+
+app.post('/login', (req, res) => {
+  const { email, senha } = req.body;
+  const query = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+
+  db.query(query, [email, senha], (err, results) => {
+    if (err) {
+      console.error('Erro no login:', err);
+      res.status(500).json({ error: 'Erro no servidor' });
+      return;
+    }
+    if (results.length === 0) {
+      res.status(401).json({ error: 'Email ou senha incorretos' });
+      return;
+    }
+    const usuario = results[0];
+    delete usuario.senha; // não envie a senha de volta
+    res.json({ usuario });
+  });
+});
+
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`✅ Servidor rodando em http://localhost:${port}`);
 });

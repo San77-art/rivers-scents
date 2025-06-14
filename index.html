@@ -8,6 +8,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
 </head>
 
+<button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+  Sair
+</button>
+
 <body class="bg-gray-100 text-gray-900 font-sans">
 
   <header class="relative bg-gradient-to-b from-purple-700 to-blue-700 h-auto py-6 px-4 shadow-md">
@@ -25,10 +29,25 @@
 <script>
   const menu = document.getElementById("menuLogin");
 
-  if (localStorage.getItem("logado") === "sim") {
-    menu.innerHTML = '<a href="logout.html" class="hover:text-yellow-400 transition">Logout</a>';
+  // Verifica se a página exige login
+  if (window.location.pathname.includes("perfil") || window.location.pathname.includes("compras")) {
+    if (localStorage.getItem("logado") !== "sim") {
+      window.location.href = "login.html";
+    }
+  }
+
+  // Atualiza o menu com o nome do usuário, se estiver logado
+  const nome = localStorage.getItem("usuario");
+
+  if (nome && localStorage.getItem("logado") === "sim") {
+    menu.innerHTML = `
+      <span class="mr-2">Olá, ${nome}</span> 
+      <a href="logout.html" class="hover:text-yellow-400 transition">Logout</a>
+    `;
   } else {
-    menu.innerHTML = '<a href="login.html" class="hover:text-yellow-400 transition">Login</a>';
+    menu.innerHTML = `
+      <a href="login.html" class="hover:text-yellow-400 transition">Login</a>
+    `;
   }
 </script>
 
@@ -39,18 +58,24 @@
     </h1>
   
     <!-- Barra de pesquisa abaixo do título -->
-    <div class="mt-4 flex justify-center">
-      <div class="relative w-10/12 md:w-1/3">
-        <input 
-          type="text" 
-          placeholder="Buscar perfumes..." 
-          class="w-full pl-10 pr-4 py-2 rounded-full shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
-        />
-        <svg class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-        </svg>
-      </div>
-    </div>
+   <div class="text-center my-6">
+  <input 
+    id="campo-pesquisa" 
+    type="text" 
+    placeholder="Digite o nome do perfume..." 
+    class="p-3 border border-gray-300 rounded w-72 focus:outline-none focus:ring-2 focus:ring-purple-600"
+  >
+
+  <button 
+    type="button" 
+    onclick="buscarPerfume()" 
+    class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition ml-2"
+  >
+    Buscar
+  </button>
+</div>
+
+
   
     <!-- Navegação -->
     <nav class="mt-4 flex justify-center space-x-6 text-white text-sm md:text-base font-medium">
@@ -145,6 +170,22 @@
   </div>
 </section>
 
+<script>
+    // Protege a página: redireciona se não estiver logado
+    if (localStorage.getItem("logado") !== "sim") {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <h1 id="boasVindas" class="text-2xl font-bold mb-4"></h1>
+
+  <p>Conteúdo da página para usuários logados.</p>
+
+  <script>
+    const usuario = localStorage.getItem("usuario");
+    document.getElementById("boasVindas").textContent = `Bem-vindo, ${usuario}`;
+  </script>
+
 <!-- Script para movimentar o carrossel de promoções -->
 <script>
   let posicaoPromocoes = 0;
@@ -234,6 +275,37 @@
     </div>
   </section>
   <a href="logout.html">Sair</a>
+<script>
+  function buscarPerfume() {
+    const nomeDigitado = document.getElementById("campo-pesquisa").value.toLowerCase();
+
+    // Lista de perfumes e suas páginas HTML correspondentes
+    const perfumes = {
+      "khafaya": "khafaya.html",
+      "oud mood": "oudmood.html",
+      "lattafa": "lattafa.html",
+      "versace eros": "versace.html",
+      "dior sauvage": "sauvage.html"
+    };
+
+    // Verifica se o nome digitado corresponde a algum perfume
+    for (let nome in perfumes) {
+      if (nomeDigitado.includes(nome)) {
+        window.location.href = perfumes[nome];
+        return;
+      }
+    }
+
+    alert("Perfume não encontrado. Tente outro nome.");
+  }
+</script>
+
+<script>
+  function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+  }
+</script>
 
 
 </body>

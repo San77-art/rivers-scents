@@ -19,7 +19,9 @@
     <!-- Informações do produto -->
     <div class="space-y-6">
       <h1 class="text-3xl font-bold text-purple-700">Lattafa Oud For Glory Eau de Parfum 100ml</h1>
-      <p class="text-gray-600">O Bade'e Al Oud Oud for Glory da Lattafa é uma fragrância unissex oriental amadeirada, lançada em 2020, que combina notas de açafrão, noz-moscada, lavanda, oud, patchouli e almíscar, resultando em um perfume intenso, sofisticado e de longa duração. </p>
+      <p class="text-gray-600">
+        O Bade'e Al Oud Oud for Glory da Lattafa é uma fragrância unissex oriental amadeirada, lançada em 2020, que combina notas de açafrão, noz-moscada, lavanda, oud, patchouli e almíscar, resultando em um perfume intenso, sofisticado e de longa duração.
+      </p>
       <p class="text-2xl font-semibold text-purple-800">R$ 349,99</p>
 
       <!-- Cálculo de frete -->
@@ -31,18 +33,26 @@
         </button>
       </div>
 
-      <!-- Formulário de Compra -->
-      <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Oud for Glory EDP 100ml">
-  <input type="hidden" name="preco" value="349.99">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="oudforglory,jpg">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
+      <!-- Botão de Compra -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md mt-4">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <!-- Script -->
+  <script>
+    function finalizarCompra() {
+      const sucesso = true;
+
+      if (sucesso) {
+        alert("Compra realizada com sucesso!");
+        window.location.href = "pagina-confirmacao.html";
+      } else {
+        alert("Erro ao processar a compra. Tente novamente.");
+      }
+    }
+  </script>
 
 </body>
 </html>

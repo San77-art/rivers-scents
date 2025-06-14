@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fakhar Black - Rivers</title>
+  <title>Afeef - Rivers</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-800">
@@ -19,7 +19,9 @@
     <!-- Informações do produto -->
     <div class="space-y-6">
       <h1 class="text-3xl font-bold text-purple-700">Lattafa Afeef Eau de Parfum 100ml</h1>
-      <p class="text-gray-600">O Afeef da Lattafa é um Eau de Parfum feminino lançado em 2024, que combina sofisticação oriental com um toque moderno e envolvente.  </p>
+      <p class="text-gray-600">
+        O Afeef da Lattafa é um Eau de Parfum feminino lançado em 2024, que combina sofisticação oriental com um toque moderno e envolvente.
+      </p>
       <p class="text-2xl font-semibold text-purple-800">R$ 519,99</p>
 
       <!-- Cálculo de frete -->
@@ -31,18 +33,25 @@
         </button>
       </div>
 
-      <!-- Formulário de Compra -->
-      <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Afeef EDP M 100ML">
-  <input type="hidden" name="preco" value="519.99">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="afeef.jpg">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
+      <!-- Botão de compra com JavaScript -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <script>
+    function finalizarCompra() {
+      const compraFoiBemSucedida = true; // Simulação
+
+      if (compraFoiBemSucedida) {
+        alert("Compra realizada com sucesso!");
+        window.location.href = "pagina-confirmacao.html"; // Crie essa página!
+      } else {
+        alert("Erro ao processar a compra. Tente novamente.");
+      }
+    }
+  </script>
 
 </body>
 </html>

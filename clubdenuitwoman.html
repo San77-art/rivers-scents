@@ -19,7 +19,11 @@
     <!-- Informações do produto -->
     <div class="space-y-6">
       <h1 class="text-3xl font-bold text-purple-700">Armaf Club De Nuit Woman Eau de Parfum 105ml</h1>
-      <p class="text-gray-600">O Club de Nuit Woman da Armaf é um perfume feminino floral frutado, conhecido por sua elegância e sofisticação. Com notas cítricas de bergamota, toranja, pêssego e laranja na abertura, um coração floral de gerânio, jasmim, lichia e rosa, e uma base envolvente de almíscar, patchouli, baunilha e vetiver, oferece uma fragrância cintilante que reflete a beleza e a vivacidade da mulher. </p>
+      <p class="text-gray-600">
+        O Club de Nuit Woman da Armaf é um perfume feminino floral frutado, conhecido por sua elegância e sofisticação.
+        Com notas cítricas de bergamota, toranja, pêssego e laranja na abertura, um coração floral de gerânio, jasmim, lichia e rosa,
+        e uma base envolvente de almíscar, patchouli, baunilha e vetiver, oferece uma fragrância cintilante que reflete a beleza e a vivacidade da mulher.
+      </p>
       <p class="text-2xl font-semibold text-purple-800">R$ 419,99</p>
 
       <!-- Cálculo de frete -->
@@ -31,19 +35,26 @@
         </button>
       </div>
 
-      <!-- Formulário de Compra -->
-      <form action="finalizarcompra.html" method="GET" class="pt-4">
-  <input type="hidden" name="produto" value="Club de nuit Woman EDP M 100ML">
-  <input type="hidden" name="preco" value="419.99">
-  <input type="hidden" name="quantidade" value="1">
-  <input type="hidden" name="imagem" value="clubdenuitwoman.jpg">
-  <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md">
-    Finalizar Compra
-  </button>
-</form>
-      </form>
+      <!-- Botão de Compra -->
+      <button onclick="finalizarCompra()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg shadow-md mt-4">
+        Finalizar Compra
+      </button>
     </div>
   </main>
+
+  <!-- Script -->
+  <script>
+    function finalizarCompra() {
+      const compraFoiBemSucedida = true;
+
+      if (compraFoiBemSucedida) {
+        alert("Compra realizada com sucesso!");
+        window.location.href = "pagina-confirmacao.html";
+      } else {
+        alert("Erro ao processar a compra. Tente novamente.");
+      }
+    }
+  </script>
 
 </body>
 </html>
