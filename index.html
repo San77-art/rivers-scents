@@ -32,8 +32,10 @@
   // Verifica se a página exige login
   if (window.location.pathname.includes("perfil") || window.location.pathname.includes("compras")) {
     if (localStorage.getItem("logado") !== "sim") {
-      window.location.href = "login.html";
-    }
+  alert("Você precisa estar logado para acessar esta página.");
+  window.location.href = "login.html";
+}
+
   }
 
   // Atualiza o menu com o nome do usuário, se estiver logado
