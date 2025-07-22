@@ -8,21 +8,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
 </head>
 
-<button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
-  Sair
-</button>
-
 <body class="bg-gray-100 text-gray-900 font-sans">
 
-  <header class="relative bg-gradient-to-b from-purple-700 to-blue-700 h-auto py-6 px-4 shadow-md">
+  <button onclick="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded absolute top-4 left-4 z-50">
+    Sair
+  </button>
 
-    <!-- Ícone do usuário no canto superior direito -->
-<div class="absolute top-4 right-4">
-  <a href="cadastro.html" class="text-white hover:text-yellow-400 transition">
-     <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <header class="relative bg-gradient-to-b from-purple-700 to-blue-700 h-auto py-6 px-4 shadow-md">
+    ...
+
+
+   <!-- Ícone do usuário no canto superior direito -->
+<div class="absolute top-4 right-4 z-50">
+  <a href="cadastro.html" class="text-white hover:text-yellow-400 transition inline-block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A9 9 0 0112 15a9 9 0 016.879 2.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
+  </a>
 </div>
+
 
 <div id="menuLogin" class="absolute top-4 right-4 text-white"></div>
 
@@ -77,6 +81,8 @@
   </button>
 </div>
 
+<!-- Resultados da busca -->
+<div id="resultadosBusca" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6"></div>
 
   
     <!-- Navegação -->
@@ -173,10 +179,17 @@
 </section>
 
 <script>
-    // Protege a página: redireciona se não estiver logado
-    if (localStorage.getItem("logado") !== "sim") {
-      window.location.href = "login.html";
-    }
+  // Lista de páginas que exigem login
+  const paginasProtegidas = ["perfil.html", "finalizar-compra.html", "compras.html"];
+
+  const estaNaPaginaProtegida = paginasProtegidas.some(pagina => window.location.pathname.includes(pagina));
+
+  if (estaNaPaginaProtegida && localStorage.getItem("logado") !== "sim") {
+    alert("Você precisa estar logado para acessar esta página.");
+    window.location.href = "login.html";
+  }
+</script>
+
   </script>
 
   <h1 id="boasVindas" class="text-2xl font-bold mb-4"></h1>
@@ -277,37 +290,86 @@
     </div>
   </section>
   <a href="logout.html">Sair</a>
+
 <script>
+  const perfumes = [
+    {
+      nome: "Lattafa Fakhar Black",
+      url: "fakharblack.html",
+      imagem: "fakharblack.jpg",
+      tags: ["lattafa", "fakhar", "black"]
+    },
+    {
+      nome: "Shaheen Silver Eau de Parfum",
+      url: "shaheen-silver.html",
+      imagem: "shahenn.jpg",
+      tags: ["shaheen", "silver"]
+    },
+    {
+      nome: "Lattafa Tharwah Silver",
+      url: "tharwahsilver.html",
+      imagem: "tharwahsilver.jpg",
+      tags: ["lattafa", "tharwah", "silver"]
+    },
+    {
+      nome: "Dior Sauvage",
+      url: "sauvage.html",
+      imagem: "sauvage.jpg",
+      tags: ["dior", "sauvage"]
+    },
+    {
+      nome: "Versace Eros",
+      url: "versace.html",
+      imagem: "versace.jpg",
+      tags: ["versace", "eros"]
+    },
+    {
+      nome: "Souvenir Floral Bouquet",
+      url: "souvenirfloralbouquet.html",
+      imagem: "souvenirfloralbouquet.png",
+      tags: ["souvenir", "floral", "bouquet"]
+    }
+  ];
+
   function buscarPerfume() {
-    const nomeDigitado = document.getElementById("campo-pesquisa").value.toLowerCase();
+    const termo = document.getElementById("campo-pesquisa").value.toLowerCase().trim();
+    const container = document.getElementById("resultadosBusca");
+    container.innerHTML = ""; // limpa os resultados anteriores
 
-    // Lista de perfumes e suas páginas HTML correspondentes
-    const perfumes = {
-      "khafaya": "khafaya.html",
-      "oud mood": "oudmood.html",
-      "lattafa": "lattafa.html",
-      "versace eros": "versace.html",
-      "dior sauvage": "sauvage.html"
-    };
-
-    // Verifica se o nome digitado corresponde a algum perfume
-    for (let nome in perfumes) {
-      if (nomeDigitado.includes(nome)) {
-        window.location.href = perfumes[nome];
-        return;
-      }
+    if (!termo) {
+      container.innerHTML = "<p class='text-center col-span-3 text-gray-500'>Digite um nome para buscar.</p>";
+      return;
     }
 
-    alert("Perfume não encontrado. Tente outro nome.");
-  }
-</script>
+    const palavras = termo.split(" ");
+    const resultados = perfumes.filter(perfume =>
+      palavras.some(p => perfume.tags.includes(p))
+    );
 
-<script>
+    if (resultados.length === 0) {
+      container.innerHTML = "<p class='text-center col-span-3 text-red-500'>Nenhum perfume encontrado.</p>";
+      return;
+    }
+
+    resultados.forEach(perfume => {
+      container.innerHTML += `
+        <div class="bg-white p-4 rounded-lg shadow-md text-center">
+          <a href="${perfume.url}">
+            <img src="${perfume.imagem}" alt="${perfume.nome}" class="w-full h-[250px] object-contain mb-4 rounded">
+            <h3 class="text-xl font-semibold text-gray-800">${perfume.nome}</h3>
+            <button class="mt-4 bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition">Ver mais</button>
+          </a>
+        </div>
+      `;
+    });
+  }
+
   function logout() {
     localStorage.clear();
     window.location.href = "login.html";
   }
 </script>
+
 
 
 </body>
